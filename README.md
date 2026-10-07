@@ -1,117 +1,133 @@
-# 🎧 Acoustic — AI Audio Studio
+# Acoustic — AI Audio Studio
 
-All-in-one AI audio platform for content creators. Generate copyright-free music, SFX, and edit audio — all in a single workflow.
+An AI-powered audio creation platform designed to make audio production more accessible through a single web-based workspace.
+
+The prototype combines AI audio capabilities with a modern web interface and was developed as part of the **AIESEC Business Cup 2026**, where the project became a **Top 3 Finalist**.
+
+## Overview
+
+Acoustic was created as a prototype for an AI Audio Studio — a platform where users can work with AI-powered audio tools through one unified interface.
+
+The project explores both the technical implementation of an AI audio product and its business potential, including the product concept, feature set, pricing direction, and go-to-market strategy.
+
+## Features
+
+- AI-powered audio creation workflow
+- Integration with ElevenLabs for AI audio capabilities
+- Audio preview and playback
+- User authentication and data management
+- Web-based studio interface
+- Responsive user experience
+- Product pricing and subscription concept
 
 ## Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS v4 + shadcn/ui
-- **AI Music**: Suno API / Stable Audio API
-- **Storage**: Cloudflare R2
-- **Auth + DB**: Supabase (Phase 4)
-- **Payments**: Stripe (Phase 5)
-- **Audio Processing**: FFmpeg (Phase 6)
+- **Next.js**
+- **TypeScript**
+- **React**
+- **Supabase**
+- **ElevenLabs API**
+- **Vercel**
 
----
+## Architecture
 
-## Getting Started
+The application is built with Next.js and TypeScript.
 
-### 1. Install dependencies
+Supabase is used for backend services and user-related data, while ElevenLabs provides AI-powered audio functionality.
+
+```text
+User
+  ↓
+Next.js Web Application
+  ↓
+AI Audio Studio
+  ├── ElevenLabs API
+  └── Supabase
+       ├── Authentication
+       └── Data Management
+```
+
+## Project Structure
+
+```text
+ai-audio-studio/
+├── app/              # Application pages and routes
+├── components/       # Reusable UI components
+├── constants/        # Application constants
+├── lib/              # Core application logic
+├── public/           # Images, audio and static assets
+├── types/            # TypeScript type definitions
+├── utils/
+│   └── supabase/     # Supabase utilities
+└── README.md
+```
+
+## Running Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/azacrafts/ai-audio-studio.git
+cd ai-audio-studio
+```
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-### 2. Configure environment variables
+Create the required environment configuration for Supabase and ElevenLabs.
 
-```bash
-cp .env.local .env.local
-# Fill in your API keys (see .env.local for all variables)
-```
-
-> **Dev mode**: If API keys are left as placeholders, the app uses mock audio from SoundHelix (public domain). You can test the full UI/UX without any keys.
-
-### 3. Run the dev server
+Then start the development server:
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Open:
 
----
-
-## MVP Feature Coverage (Phases 1–3)
-
-| Feature | Status |
-|---|---|
-| Preset landing page with video grid | ✅ |
-| Hover-to-play audio previews | ✅ |
-| AI generation form (prompt, preset, model, duration) | ✅ |
-| `POST /api/generate` with daily rate limiting | ✅ |
-| Mock AI mode (no API key needed) | ✅ |
-| Audio player with waveform visualizer | ✅ |
-| Watermark notice for free plan | ✅ |
-| Upgrade CTA modal (paywall) | ✅ |
-| Pricing page | ✅ |
-| `GET /api/presets` | ✅ |
-| `POST /api/process-audio` (FFmpeg stub) | ✅ |
-
----
-
-## Project Structure
-
-```
-acoustic/
-├── app/
-│   ├── page.tsx              # Presets landing page
-│   ├── generate/page.tsx     # AI Studio / generation page
-│   ├── pricing/page.tsx      # Pricing page
-│   └── api/
-│       ├── generate/         # POST — AI music generation
-│       ├── presets/          # GET  — preset library
-│       └── process-audio/    # POST — FFmpeg processing
-├── components/
-│   ├── presets/              # PresetCard, PresetGrid
-│   ├── generate/             # GenerateForm, AudioPlayer, UpgradeCTA
-│   └── shared/               # Navbar
-├── constants/
-│   └── presets.ts            # 6 preset configs
-├── lib/
-│   ├── ai/                   # Suno + Stable Audio wrappers
-│   ├── storage/              # R2 upload helper
-│   └── audio/                # FFmpeg helpers
-└── types/                    # TypeScript types
+```text
+http://localhost:3000
 ```
 
----
+## Business Case
 
-## Adding Audio Previews
+This project was developed for the **AIESEC Business Cup 2026**.
 
-Place short MP3 clips (5–10s) in `public/audio/previews/`:
-- `travel-vlog.mp3`
-- `tiktok-hook.mp3`
-- `podcast-bg.mp3`
-- `gaming-montage.mp3`
-- `cinematic.mp3`
-- `dynamic.mp3`
+**Result:** Top 3 Finalist
 
----
+The project focused on creating and validating the concept of an AI Audio Studio, including:
 
-## Next Steps (Phases 4–7)
+- Product value proposition
+- Target users and use cases
+- Feature prioritization
+- Prototype development
+- Pricing concept
+- Go-to-market direction
 
-- [ ] **Phase 4**: Supabase auth + onboarding (email/password, platform quiz)
-- [ ] **Phase 5**: Stripe subscriptions + token purchases
-- [ ] **Phase 6**: Real FFmpeg processing (trim, fade, SFX merge)
-- [ ] **Phase 7**: Share links + viral loop, analytics
+## My Contribution
 
----
+My contribution included:
 
-## Deployment (Vercel)
+- Conceptualizing the AI Audio Studio product
+- Defining the core value proposition
+- Designing the initial feature set
+- Developing the product prototype
+- Exploring product positioning and pricing
+- Defining the go-to-market direction
 
-```bash
-# Push to GitHub, then connect to Vercel
-vercel --prod
-```
+## Future Improvements
 
-Add all `.env.local` variables in the Vercel dashboard under Project Settings → Environment Variables.
+- Expand AI audio generation capabilities
+- Improve the studio editing workflow
+- Add project and audio library management
+- Improve onboarding and user experience
+- Develop subscription and usage-based billing
+- Expand collaboration features
+
+## Live Demo
+
+The prototype was deployed using Vercel:
+
+https://acoustic-kappa.vercel.app/
